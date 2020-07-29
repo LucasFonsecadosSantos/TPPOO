@@ -4,9 +4,9 @@ import Core.Eleitor;
 
 public class EleitorPreferencial extends Eleitor {
 
-    public EleitorPreferencial(String nome, int tituloEleitor) {
+    public EleitorPreferencial(String nome, int tituloEleitor, String tipoAtendimento) {
 
-        super(nome, tituloEleitor, 1, 1);
+        super(nome, tituloEleitor, 1, 1, tipoAtendimento);
 
     }
 

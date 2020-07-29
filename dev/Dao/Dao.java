@@ -1,6 +1,8 @@
 package Dao;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.List;
 import Core.Atendente;
 import java.io.BufferedReader;
@@ -9,6 +11,7 @@ import java.io.EOFException;
 import java.util.List;
 import java.util.ArrayList;
 import Core.Eleitor;
+import Core.SimuladorParser;
 
 public class Dao {
 
@@ -22,8 +25,42 @@ public class Dao {
 
     }
 
-    public void read() {
+    public void output(String outData) {
 
+        try (FileWriter fw = new FileWriter("data/out.txt")) {
+
+            fw.write(outData);
+        
+        } catch (Exception ex) {
+
+            System.out.println("Ops: Parece que tivemos uma excecao na escrita dos resultados da simulacao: " + ex.getMessage());
+
+        }
+
+    }
+
+    public void read(String filePath) {
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+
+            while (line != null) {
+
+                sb.append(line).append("\n");
+                line = br.readLine();
+
+            }
+
+            this.eleitores  = SimuladorParser.getEleitores(sb.toString());
+            this.atendentes = SimuladorParser.getAtendentes(sb.toString());
+
+        } catch (Exception e) {
+
+            System.out.println("Ops: Parece que tivemos uma excecao na leitura dos resultados da simulacao: " + e.getMessage());
+
+        }
 
     }
 

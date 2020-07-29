@@ -4,11 +4,36 @@ public abstract class Atendente {
 
     private String nome;
     private int tempo;
+    private int tempoEstado;
 
     public Atendente(String nome, int tempo) {
 
         this.setNome(nome);
         this.setTempo(tempo);
+
+    }
+
+    public boolean livre() {
+
+        return (this.tempoEstado == 0);
+
+    }
+
+    public void setTempoEstado(int tempoAtendimento) {
+
+        this.tempoEstado = (tempoAtendimento * this.tempo);
+
+    }
+
+    public int getTempoEstado() {
+
+        return this.tempoEstado;
+
+    }
+
+    public void atualizaTempoEstado() {
+
+        this.tempoEstado--;
 
     }
 

@@ -22,9 +22,33 @@ public abstract class Atendimento implements Comparable<Eleitor> {
 
     }
 
+    public void setTempoEspera(int tempo) {
+
+        this.tempoEspera = tempo;
+
+    }
+
+    public void setTempoAtendimento(int tempo) {
+
+        this.tempoAtendimento = tempo;
+
+    }
+
+    public void atualizaTempoEspera() {
+
+        this.tempoEspera++;
+
+    }
+
+    public int getTempo() {
+
+        return Math.max(this.tempo, this.eleitor.getTempo());
+
+    }
+
     public int getTempoAtendimento() {
 
-        return tempoAtendimento;
+        return this.tempoAtendimento;
 
     }
 

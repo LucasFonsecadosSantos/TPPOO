@@ -1,0 +1,9 @@
+[INICIO-ATENDENTE]
+Nome01,Experiente
+Nome2,Iniciante
+Nome03,Iniciante
+[FIM-ATENDENTE]
+
+[INICIO-ELEITOR]
+Nome01,65456456,prioritario,votar
+[FIM-ELEITOR]
