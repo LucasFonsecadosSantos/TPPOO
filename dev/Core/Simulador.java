@@ -3,6 +3,7 @@ package Core;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.ArrayList;
+import java.util.Comparator;
 import Dao.Dao;
 import Model.AtendimentoJustificativa;
 import Model.AtendimentoVotar;
@@ -15,7 +16,9 @@ public class Simulador {
 
     public Simulador(String inputPath) {
 
-        this.atendimentos = new PriorityQueue<Atendimento>();
+        Comparator<Atendimento> atendimentoSorter = Comparator.comparing(Atendimento::getTempo);
+
+        this.atendimentos = new PriorityQueue<Atendimento>(atendimentoSorter);
         this.atendentes = new ArrayList<Atendente>();
         this.dao = new Dao();
         this.carregarDados(inputPath);
@@ -27,19 +30,31 @@ public class Simulador {
         Atendimento atendimentoAtual;
         List<Atendimento> concluidos    = new ArrayList<Atendimento>();
         List<Integer> tamanhoAtualFila  = new ArrayList<Integer>();
-
         int tempo = 0;
+        int l1 = 0;
+        int l2 = 0;
 
         while (!this.atendimentos.isEmpty()) {
-
+            l1++;
             for (Atendente atendente : this.atendentes) {
-                
+                l2++;
                 if (atendente.livre()) {
+                    
+                    if (!this.atendimentos.isEmpty()) {
+                    
+                        atendimentoAtual = this.atendimentos.poll();
+                        //System.out.println(atendimentoAtual);
+                        //System.out.println("L1: " + l1 + " / L2: " + l2 + " ATENDENTE: " + atendente.getNome() + " ATENDIMENTO: " + atendimentoAtual);
+                        System.out.println("Processando...");
+                        atendente.setTempoEstado(atendimentoAtual.getTempo());
+                        atendimentoAtual.setTempoAtendimento(atendente.getTempoEstado());
+                        concluidos.add(atendimentoAtual);
+                    
+                    } else {
 
-                    atendimentoAtual = this.atendimentos.poll();
-                    atendente.setTempoEstado(atendimentoAtual.getTempo());
-                    atendimentoAtual.setTempoAtendimento(atendente.getTempoEstado());
-                    concluidos.add(atendimentoAtual);
+                        break;
+
+                    }
 
                 } else {
 
@@ -52,6 +67,7 @@ public class Simulador {
             ++tempo;
             this.atualizaTempoEsperaFila();
             tamanhoAtualFila.add(this.atendimentos.size());
+            System.out.println("PROCESSAMENTO COMPLETO!");
 
         }
 

@@ -13,9 +13,7 @@ public class Estatistica {
     private double              tempoMedioTipoEleitor;
     private List<Atendimento>   atendimentosConcluidos;
 
-    public Estatistica() {
-
-    }
+    public Estatistica() {}
 
     public Estatistica setTempoTotal(int tempoTotal) {
 
@@ -133,10 +131,14 @@ public class Estatistica {
 
     @Override
     public String toString() {
-        return "Estatistica [atendimentosConcluidos=" + atendimentosConcluidos + ", quantidadeEventos="
-                + quantidadeEventos + ", tamanhoMaximoFila=" + tamanhoMaximoFila + ", tamanhoMedioFila="
-                + tamanhoMedioFila + ", tempoMedioFila=" + tempoMedioFila + ", tempoMedioTipoEleitor="
-                + tempoMedioTipoEleitor + ", tempoTotal=" + tempoTotal + "]";
+        return "Estatistica {\n " +
+            "atendimentos_concluidos: \n\t" + atendimentosConcluidos + "\n" +
+            "quantidade_eventos_atendidos: " + quantidadeEventos + ",\n" +
+            "tamanho_maximo_fila: " + tamanhoMaximoFila + ",\n" + 
+            "tamanho_medio_fila: " + tamanhoMedioFila + ",\n"+
+            "tempo_medio_fila: " + tempoMedioFila + ",\n" +
+            "tempo_medio_tipo_eleitor: " + tempoMedioTipoEleitor + ",\n" +
+            "tempoTotal: " + tempoTotal + "\n}";
     }
 
 

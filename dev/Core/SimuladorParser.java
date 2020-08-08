@@ -88,8 +88,6 @@ public class SimuladorParser {
 
         }
 
-        System.out.println(eleitores);
-
         return eleitores;
 
     }

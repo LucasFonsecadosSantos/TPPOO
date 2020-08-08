@@ -27,7 +27,17 @@ public class Dao {
 
     public void output(String outData) {
 
-        try (FileWriter fw = new FileWriter("data/out.txt")) {
+        File file = new File("data/out.txt");
+
+        try {
+
+            file.createNewFile();
+        
+        } catch (Exception e) {
+
+        }
+
+        try (FileWriter fw = new FileWriter(file)) {
 
             fw.write(outData);
         
