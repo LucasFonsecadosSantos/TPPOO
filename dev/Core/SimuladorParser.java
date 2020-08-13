@@ -7,10 +7,28 @@ import Model.AtendenteIniciante;
 import Model.EleitorComum;
 import Model.EleitorPreferencial;
 
+/**
+ * [SIMULADOR DE ATENDIMENTO EM ZONA ELEITORAL - PPOO Projeto Pratico]
+ * 
+ * A presente classe e repsonsavel pelo modelo de parser das informacoes
+ * referentes ao projeto. O parseamento do arquivo de entrada e executado
+ * aqui.
+ * 
+ * @author Lucas Fonseca dos Santos
+ * @author Marco Aurelio Ferreira de Sousa
+ * 
+ */
 public class SimuladorParser {
 
     public SimuladorParser() {}
 
+    /**
+     * Metodo estatico de recuperacao das informacoes sobre os
+     * atendentes.
+     * 
+     * @param data <code>String</code>      informacao textual nao parseada.
+     * @return <code>List atendente</code>  Lista com atendentes instanciados.
+     */
     public static List<Atendente> getAtendentes(String data) {
 
         List<Atendente> atendentes = new ArrayList<Atendente>();
@@ -51,6 +69,12 @@ public class SimuladorParser {
 
     }
 
+    /**
+     * Metodo estatico responsavel pela recupecao das informacoes sobre os eleitores.
+     * 
+     * @param data <code>String</code> informacao textual nao parseada.
+     * @return <code>List Eleitor</code> lista de eleitores.
+     */
     public static List<Eleitor> getEleitores(String data) {
 
         List<Eleitor> eleitores = new ArrayList<Eleitor>();

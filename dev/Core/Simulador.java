@@ -8,12 +8,27 @@ import Dao.Dao;
 import Model.AtendimentoJustificativa;
 import Model.AtendimentoVotar;
 
+/**
+ * [SIMULADOR DE ATENDIMENTO EM ZONA ELEITORAL - PPOO Projeto Pratico]
+ * 
+ * A presente classe e repsonsavel pela execucao do processo e logica de
+ * simulacao.
+ * 
+ * @author Lucas Fonseca dos Santos
+ * @author Marco Aurelio Ferreira de Sousa
+ * 
+ */
 public class Simulador {
 
     private PriorityQueue<Atendimento> atendimentos;
     private List<Atendente> atendentes;
     private Dao dao;
 
+    /**
+     * Construtor da classe.
+     * 
+     * @param inputPath Caminho do arquivo de entrada passado por argumento.
+     */
     public Simulador(String inputPath) {
 
         Comparator<Atendimento> atendimentoSorter = Comparator.comparing(Atendimento::getTempo);
@@ -25,6 +40,10 @@ public class Simulador {
 
     }
 
+    /**
+     * Metodo responsavel pela execucao do processamento da
+     * simulacao. Aqui jaz toda a logica do processamento.
+     */
     public void executar() {
 
         Atendimento atendimentoAtual;
@@ -85,6 +104,10 @@ public class Simulador {
 
     }
 
+    /**
+     * Metodo responsavel pela atualizacao do tempo de espera na fila
+     * em cada um dos eventos de atendimento.
+     */
     private void atualizaTempoEsperaFila() {
 
         for (Atendimento atendimento : this.atendimentos) {
@@ -95,12 +118,24 @@ public class Simulador {
 
     }
 
+    /**
+     * Metodo responsavel pela gerecao da saida do processamento.
+     * 
+     * @param estatistica   Classe com informacoes e metricas colhidas durante
+     *                      o processamento.
+     */
     private void gerarSaidas(Estatistica estatistica) {
 
         this.dao.output(estatistica.toString());
 
     }
 
+    /**
+     * Metodo responsavel pela leitura do arquivo de entrada e carregamento das
+     * listas de informacoes utilizadas pelo processamento da simuacao.
+     * 
+     * @param inputPath <code>String</code> caminho do arquivo de entrada.
+     */
     private void carregarDados(String inputPath) {
 
         this.dao.read(inputPath);
@@ -109,6 +144,11 @@ public class Simulador {
 
     }
 
+    /**
+     * Metodo responsavel pelo carregamento e construcao dos eventos de atendimento.
+     * 
+     * @param eleitores <code>List Eleitor</code> lista de eleitores.
+     */
     private void carregarAtendimentos(List<Eleitor> eleitores) {
 
         for (Eleitor eleitor : eleitores) {

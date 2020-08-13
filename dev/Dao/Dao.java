@@ -13,11 +13,24 @@ import java.util.ArrayList;
 import Core.Eleitor;
 import Core.SimuladorParser;
 
+/**
+ * [SIMULADOR DE ATENDIMENTO EM ZONA ELEITORAL - PPOO Projeto Pratico]
+ * 
+ * A presente classe e repsonsavel pelo acesso a camada de dados
+ * persistidos.
+ * 
+ * @author Lucas Fonseca dos Santos
+ * @author Marco Aurelio Ferreira de Sousa
+ * 
+ */
 public class Dao {
 
     private List<Eleitor> eleitores;
     private List<Atendente> atendentes;
 
+    /**
+     * Construtor da classe.
+     */
     public Dao() {
 
         this.eleitores  = new ArrayList<Eleitor>();
@@ -25,12 +38,18 @@ public class Dao {
 
     }
 
+    /**
+     * Metodo responsavel pelo acesso de saida/escrita de dados.
+     * 
+     * @param outData <code>String</code> informacao textual de saida.
+     */
     public void output(String outData) {
 
         File file = new File("data/out.txt");
 
         try {
 
+            file.getParentFile().mkdirs();
             file.createNewFile();
         
         } catch (Exception e) {
@@ -49,6 +68,11 @@ public class Dao {
 
     }
 
+    /**
+     * Metodo responsavel pelo acesso de entrada/leitura de dados.
+     * 
+     * @param filePath <code>String</code> caminho do arquivo de entrada. 
+     */
     public void read(String filePath) {
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -74,12 +98,24 @@ public class Dao {
 
     }
 
+    /**
+     * Metodo acessador do atributo eleitores, construido a partir
+     * dos dados lidos.
+     * 
+     * @return <code>List eleitor</code> lista de eleitores.
+     */
     public List<Eleitor> getEleitores() {
 
         return this.eleitores;
 
     }
     
+    /**
+     * Metodo acessador do atributo atendentes. construido a partir
+     * dos dados lidos.
+     * 
+     * @return <code>List atendente</code> lista de atendentes.
+     */
     public List<Atendente> getAtendentes() {
 
         return this.atendentes;
