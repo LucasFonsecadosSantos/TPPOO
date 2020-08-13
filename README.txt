@@ -54,7 +54,7 @@ $ java /dev/Main <args>
 Agradecemos desde ja!
 Qualquer coisa entre em contato:
 lucas.santos3@estudante.ufla.br
-maureliocfh@gmail.com
+maurelio@estudante.ufla.br
 
 GITHUBS: 	github.com/LucasFonsecaDosSantos
 		github.com/maureliofs
